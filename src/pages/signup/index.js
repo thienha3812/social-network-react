@@ -40,7 +40,11 @@ function Signup() {
               <div className="col-md-6 bg-white pt-5">
                 <div className="sign-in-from">
                   <h1 className="mb-0">Sign Up</h1>
-                  <p>Vui lòng nhập đầy đủ thông tin để đăng ký tài khoản.</p>
+                  <p>
+                    Vui lòng nhập đầy đủ thông tin để đăng ký tài khoản.
+                    {' '}
+                    {process.env.REACT_APP_KEY}
+                  </p>
                   <form className="mt-4">
                     <div className="form-group">
                       <input type="email" className="form-control mb-0" id="exampleInputEmail2" placeholder="Nhập tài khoản" />
