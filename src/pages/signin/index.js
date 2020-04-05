@@ -45,30 +45,30 @@ function Signin() {
               </div>
               <div className="col-md-6 bg-white pt-5">
                 <div className="sign-in-from">
-                  <h1 className="mb-0">Sign in</h1>
-                  <p>Enter your email address and password to access admin panel.</p>
+                  <h1 className="mb-0">Đăng nhập</h1>
+                  <p>Vui lòng nhập tài khoản và mật khẩu để đăng nhập.</p>
                   <form className="mt-4">
                     <div className="form-group">
-                      <label htmlFor="exampleInputEmail1">Email address</label>
-                      <input type="email" className="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email" />
+                      <input type="email" className="form-control mb-0" id="exampleInputEmail1" placeholder="Nhập tài khoản" />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="exampleInputPassword1">Password</label>
-                      <a href="#" className="float-right">Forgot password?</a>
-                      <input type="password" className="form-control mb-0" id="exampleInputPassword1" placeholder="Password" />
+                      <input type="password" className="form-control mb-0" id="exampleInputPassword1" placeholder="Nhập mật  khẩu" />
                     </div>
                     <div className="d-inline-block w-100">
                       <div className="custom-control custom-checkbox d-inline-block mt-2 pt-1">
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember Me</label>
+                        <label className="custom-control-label" htmlFor="customCheck1">Ghi nhớ tài khoản</label>
                       </div>
-                      <button type="submit" className="btn btn-primary float-right">Sign in</button>
+                      <button type="submit" className="btn btn-primary float-right">Đăng nhập</button>
+                    </div>
+                    <div>
+                      <a href="#" className="float-right">Quên mật khẩu?</a>
                     </div>
                     <div className="sign-info">
                       <span className="dark-color d-inline-block line-height-2">
-                        Don't have an account?
+                        Bạn chưa có tài khoản?
                         {' '}
-                        <a href="/dangky">Sign up</a>
+                        <a href="/dangky">Đăng ký</a>
                       </span>
                       <ul className="iq-social-media">
                         <li><a href="#"><i className="ri-facebook-box-line" /></a></li>
