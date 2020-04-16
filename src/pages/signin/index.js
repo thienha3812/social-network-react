@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { Redirect } from 'react-router-dom';
-import actionLogin from './actions';
+import {handleLogin} from './actions';
 import ResponsiveDialog from '../../components/loading';
 
 
@@ -23,7 +23,9 @@ function Signin(props) {
     content: '',
     severity: '',
   });
-  const { horizontal, vertical } = message;
+  const {
+    horizontal, vertical, content, severity,
+  } = message;
   const handleLogin = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -31,21 +33,25 @@ function Signin(props) {
       setMessage({
         open: true, horizontal, vertical, content: 'Vui lòng kiểm tra lại thông tin!', severity: 'warning',
       });
-      // return;
+      return;
     }
     setLoading(true);
-    props.actionLogin({ username: 'admin123', password: 'admin123' });
+    Promise.resolve(props.handleLogin({ username,password})).then(() => {
+      setLoading(false);
+    });
   };
   const handleClose = () => {
     setMessage({
-      horizontal, vertical, open: false, content: '',
+      horizontal, vertical, open: false, content, severity,
     });
   };
   React.useEffect(() => {
     if (props.state.signinReducer.success) {
-      setForm({ username: '', password: '' });
+      setMessage({
+        open: true, horizontal, vertical, content: 'Tài khoản hoặc mật khẩu không đúng!', severity: 'error',
+      });
     }
-  }, [props.state.signinReducer]);
+  }, [props.state.signinReducer.success]);
   return (
     <>
       {props.state.signinReducer.isLogged && <Redirect to="/bangtin" /> }
@@ -123,7 +129,6 @@ function Signin(props) {
             </div>
           </section>
           {/* Sign in END */}
-          {ReactDOM.createPortal(<ResponsiveDialog state={loading} />, document.body)}
           <Snackbar open={message.open} autoHideDuration={1000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
             <Alert severity={message.severity}>{message.content}</Alert>
           </Snackbar>
@@ -136,4 +141,4 @@ function Signin(props) {
 const mapStateToProps = (state) => ({
   state,
 });
-export default connect(mapStateToProps, { actionLogin })(Signin);
+export default connect(mapStateToProps, { handleLogin })(Signin);

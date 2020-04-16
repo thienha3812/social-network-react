@@ -13,6 +13,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import indexReducer from './index.reducer';
 import indexSagas from './index.sagas';
+import LoadingView from './components/loading';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -40,7 +41,7 @@ sagaMiddleware.run(indexSagas);
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={<LoadingView open/>} persistor={persistor}>
       <App />
     </PersistGate>
   </Provider>,

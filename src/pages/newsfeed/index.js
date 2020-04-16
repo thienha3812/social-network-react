@@ -1,8 +1,36 @@
 /* eslint-disable no-script-url */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { postingService } from '../../services/user.service'
+import SnackBar from '../../components/message_snackbar'
 
-function NewsFeed() {
+function NewsFeed(props) {
+  const refModal = React.useRef();
+  const [post,setPost] = React.useState({content : ''})
+  const [message,setMessage] = React.useState({message : '',severity:'',open : false})
+  const fadeOrHideModalPost = (type) => {
+    if(type === 'SHOW'){
+        refModal.current.classList.add('show');
+        refModal.current.style.display = 'block';
+    }
+    if(type === 'HIDDEN'){      
+        refModal.current.classList.remove('show');
+        refModal.current.style.display = '';        
+    }
+  };
+  const  posting = async () => {
+      const request  = await postingService(post)
+      if(request.data.success){
+        setMessage({message:request.data.message,open : true , severity : 'success'})
+        setPost({content : ""})
+        fadeOrHideModalPost("HIDDEN")
+      }
+      
+  }
   return (
     <div id="content-page" className="content-page">
       <div className="container">
@@ -12,17 +40,17 @@ function NewsFeed() {
               <div id="post-modal-data" className="iq-card iq-card-block iq-card-stretch iq-card-height">
                 <div className="iq-card-header d-flex justify-content-between">
                   <div className="iq-header-title">
-                    <h4 className="card-title">Create Post</h4>
+                    <h4 className="card-title">Tạo bài viết</h4>
                   </div>
                 </div>
                 <div className="iq-card-body" data-toggle="modal" data-target="#post-modal">
                   <div className="d-flex align-items-center">
                     <div className="user-img">
-                      <img src="images/user/1.jpg" alt="userimg" className="avatar-60 rounded-circle" />
+                      <img alt="userimg" src={props.state.signinReducer.avatar} className="avatar-60 rounded-circle" />
                     </div>
-                    <form className="post-text ml-3 w-100" action="javascript:void();">
-                      <input type="text" className="form-control rounded" placeholder="Write something here..." style={{ border: 'none' }} />
-                    </form>
+                    <div className="post-text ml-3 w-100">
+                      <input type="text" onFocusCapture={() => fadeOrHideModalPost('SHOW')} className="form-control rounded" placeholder="Viết trạng thái của bạn tại đây..." style={{ border: 'none' }} />
+                    </div>
                   </div>
                   <hr />
                   <ul className="post-opt-block d-flex align-items-center list-inline m-0 p-0">
@@ -30,52 +58,32 @@ function NewsFeed() {
                       <a href="#" />
                       <img src="images/small/07.png" alt="icon" className="img-fluid" />
                       {' '}
-                      Photo/Video
-                    </li>
-                    <li className="iq-bg-primary rounded p-2 pointer mr-3">
-                      <a href="#" />
-                      <img src="images/small/08.png" alt="icon" className="img-fluid" />
-                      {' '}
-                      Tag Friend
+                      Hình ảnh
                     </li>
                     <li className="iq-bg-primary rounded p-2 pointer mr-3">
                       <a href="#" />
                       <img src="images/small/09.png" alt="icon" className="img-fluid" />
                       {' '}
-                      Feeling/Activity
-                    </li>
-                    <li className="iq-bg-primary rounded p-2 pointer">
-                      <div className="iq-card-header-toolbar d-flex align-items-center">
-                        <div className="dropdown">
-                          <span className="dropdown-toggle" id="post-option" data-toggle="dropdown">
-                            <i className="ri-more-fill" />
-                          </span>
-                          <div className="dropdown-menu dropdown-menu-right" aria-labelledby="post-option" style={{}}>
-                            <a className="dropdown-item" href="#">Check in</a>
-                            <a className="dropdown-item" href="#">Live Video</a>
-                            <a className="dropdown-item" href="#">Gif</a>
-                            <a className="dropdown-item" href="#">Watch Party</a>
-                            <a className="dropdown-item" href="#">Play with Friend</a>
-                          </div>
-                        </div>
-                      </div>
+                      Cảm xúc
                     </li>
                   </ul>
                 </div>
-                <div className="modal fade" id="post-modal" tabIndex={-1} role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style={{ display: 'none' }}>
+                <div className="modal fade" ref={refModal} id="post-modal" tabIndex={-1} role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style={{ display: 'none' }}>
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
                       <div className="modal-header">
-                        <h5 className="modal-title" id="post-modalLabel">Create Post</h5>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal"><i className="ri-close-fill" /></button>
+                        <h5 className="modal-title" id="post-modalLabel">Đăng bài viết</h5>
+                         <IconButton onClick={()=> fadeOrHideModalPost("HIDDEN")} style={{color:"rgb(80, 181, 255)"}} aria-label="add to shopping cart">
+                            <CloseIcon  />
+                          </IconButton>
                       </div>
                       <div className="modal-body">
                         <div className="d-flex align-items-center">
                           <div className="user-img">
-                            <img src="images/user/1.jpg" alt="userimg" className="avatar-60 rounded-circle img-fluid" />
+                            <img src={props.state.signinReducer.avatar} alt="userimg" className="avatar-60 rounded-circle img-fluid" />
                           </div>
                           <form className="post-text ml-3 w-100" action="javascript:void();">
-                            <input type="text" className="form-control rounded" placeholder="Write something here..." style={{ border: 'none' }} />
+                            <input type="text" className="form-control rounded" onChange={(event)=>setPost({content:event.target.value})} placeholder="Viết trạng thái của bạn tại đây..." style={{ border: 'none' }} />
                           </form>
                         </div>
                         <hr />
@@ -146,6 +154,7 @@ function NewsFeed() {
                           </li>
                         </ul>
                         <hr />
+                        {/*
                         <div className="other-option">
                           <div className="d-flex align-items-center justify-content-between">
                             <div className="d-flex align-items-center">
@@ -201,7 +210,8 @@ function NewsFeed() {
                             </div>
                           </div>
                         </div>
-                        <button type="submit" className="btn btn-primary d-block w-100 mt-3">Post</button>
+                        */}
+                        <button type="submit" onClick={posting} className="btn btn-primary d-block w-100 mt-3">Đăng bài</button>
                       </div>
                     </div>
                   </div>
@@ -644,7 +654,7 @@ function NewsFeed() {
                           <div className="like-data">
                             <div className="dropdown">
                               <span className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                <img src="images/icon/01.png" className="img-fluid" alt="" />
+                                 <FavoriteIcon style={{color:"red"}}/>
                               </span>
                               <div className="dropdown-menu">
                                 <a className="ml-2 mr-2" href="#" data-toggle="tooltip" data-placement="top" title data-original-title="Like"><img src="images/icon/01.png" className="img-fluid" alt="" /></a>
@@ -818,7 +828,7 @@ function NewsFeed() {
                           <div className="like-data">
                             <div className="dropdown">
                               <span className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                <img src="images/icon/01.png" className="img-fluid" alt="" />
+                                 <FavoriteIcon style={{color:"red"}}/>
                               </span>
                               <div className="dropdown-menu">
                                 <a className="ml-2 mr-2" href="#" data-toggle="tooltip" data-placement="top" title data-original-title="Like"><img src="images/icon/01.png" className="img-fluid" alt="" /></a>
@@ -997,7 +1007,7 @@ function NewsFeed() {
                           <div className="like-data">
                             <div className="dropdown">
                               <span className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                <img src="images/icon/01.png" className="img-fluid" alt="" />
+                                <FavoriteIcon style={{color:"red"}}/>
                               </span>
                               <div className="dropdown-menu">
                                 <a className="ml-2 mr-2" href="#" data-toggle="tooltip" data-placement="top" title data-original-title="Like"><img src="images/icon/01.png" className="img-fluid" alt="" /></a>
@@ -1299,12 +1309,16 @@ function NewsFeed() {
           </div>
           <div className="col-sm-12 text-center">
             <img src="images/page-img/page-load-loader.gif" alt="loader" style={{ height: '100px' }} />
-          </div>
+          </div>          
         </div>
       </div>
+      <SnackBar open={message.open} message={message.message} handleClose={()=>setMessage({open : false,message : message.message,severity:message.severity})} severity={message.severity} />
     </div>
 
   );
 }
+const mapStateToProps = (state) => ({
+  state,
+});
 
-export default NewsFeed;
+export default connect(mapStateToProps, null)(NewsFeed);

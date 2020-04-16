@@ -1,29 +1,33 @@
 /* eslint-disable no-case-declarations */
 
-import { HANDLE_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS } from './constants';
+import { HANDLE_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS,HANDLE_LOGOUT } from './constants';
 
 
 const initialState = {
-  error: null,
   success: null,
   full_name: null,
   loading: null,
-  isLogged: null,
+  isLogged: false,
+  avatar: null,
 };
 
-const HANDLE_LOGOUT = 'HANDLE_LOGOUT';
+
 function signinReducer(state = initialState, { type, payload }) {
   switch (type) {
     case HANDLE_LOGIN:
       return { ...state, loading: true };
     case HANDLE_LOGOUT:
       return {
-        ...state, isLogged: null, success: null,
+        ...state, isLogged: null, success: null,full_name : null ,avatar : null
       };
     case LOGIN_SUCCESS:
-      const { full_name } = payload.data;
+      const { full_name, avatar } = payload.data.user_infor;
       return {
-        ...state, loading: false, isLogged: true, success: true, full_name,
+        ...state, loading: false, isLogged: true, success: true, full_name, avatar,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state, loading: false, isLogged: false, success: false,
       };
     default:
       return state;

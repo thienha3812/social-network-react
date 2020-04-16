@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleBackdrop(props) {
+  console.log(props)
   const open = props.state;
   const classes = useStyles();
   return (
