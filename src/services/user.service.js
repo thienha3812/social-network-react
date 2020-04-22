@@ -43,3 +43,10 @@ export async function acceptFriendRequest({id}){
   })
   return request
 }
+export async function getUserOnline(){
+    const request = await axios({
+      url : '/api/user/useronline',
+      method :'GET'
+    })
+    return request
+}

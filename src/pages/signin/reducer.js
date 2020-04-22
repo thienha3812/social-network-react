@@ -9,6 +9,7 @@ const initialState = {
   loading: null,
   isLogged: false,
   avatar: null,
+  username :  null
 };
 
 
@@ -21,9 +22,9 @@ function signinReducer(state = initialState, { type, payload }) {
         ...state, isLogged: null, success: null,full_name : null ,avatar : null
       };
     case LOGIN_SUCCESS:
-      const { full_name, avatar } = payload.data.user_infor;
+      const { full_name, avatar,username } = payload.data.user_infor;
       return {
-        ...state, loading: false, isLogged: true, success: true, full_name, avatar,
+        ...state, loading: false, isLogged: true, success: true, full_name, avatar,username
       };
     case LOGIN_FAILURE:
       return {
