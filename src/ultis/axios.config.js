@@ -1,5 +1,8 @@
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
+import { handleLogout } from '../pages/signin/actions';
+
+
 
 
 const config = axios.create({
@@ -8,5 +11,9 @@ const config = axios.create({
   withCredentials : true
 });
 
+axios.interceptors.response.use(()=>{
+
+},(err)=>{
+})
 
 export default config;

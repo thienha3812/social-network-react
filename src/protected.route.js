@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function ProtectedRoute({ component: Component, state, ...rest }) {
-  console.log(state.signinReducer.isLogged)
   return (
     <>
       {
