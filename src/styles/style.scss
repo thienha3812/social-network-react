@@ -1,0 +1,283 @@
+/*
+Template: SocialV - Responsive Bootstrap 4 Admin Dashboard Template
+Author: iqonicthemes.in
+Design and Developed by: iqonicthemes.in
+NOTE: This file contains the styling for responsive Template.
+*/
+
+/*================================================
+[  Table of contents  ]
+================================================
+
+:: General
+:: Badge
+:: Media Support
+:: Best Sellers
+:: Profile Avatar
+:: Countdown
+:: Progressbar
+:: Dropdown Menu
+:: Badge Img Tag
+:: List Style 1
+:: Icon Box
+:: Tasks Card
+:: Sign In
+:: Dash Hover
+:: Waves Effect
+:: Sidebar
+:: Sidebar Menu
+:: Top Menu
+:: Content Page
+:: Error Page
+:: OWL Carousel
+:: Timeline
+:: Team
+:: User Add Block
+:: Email list
+:: Booking list
+:: Chart
+:: Material Card Style
+:: Circle Progressbar
+:: Tikit Booking List
+:: Right Sidebar Menu
+:: FAQ
+:: Table
+:: Animation Card
+:: Footer
+:: Map Profile
+:: Mail Inbox
+:: Slick Arrow
+:: Calender
+:: From Wizard
+:: Chat
+:: Profile
+:: Todo
+:: Privacy Policy
+:: User List
+:: Add User
+
+======================================
+[ End table content ]
+======================================*/
+
+/*--------------------------------------------------------------------
+                            General
+---------------------------------------------------------------------*/
+*::-moz-selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
+::-moz-selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
+::selection { background: var(--iq-primary); color: var(--iq-white); text-shadow: none; }
+
+/* Definition Lists */
+dl dd { margin-bottom: 15px; }
+dl dd:last-child { margin-bottom: 0px; }
+
+/* Table */
+th { }
+a:hover { text-decoration: none; }
+.dropdown-item { font-size: 14px; }
+.dropdown-menu { border-radius: 10px; }
+
+/* scroller */
+.scroller { overflow-y: auto; scrollbar-color: var(--iq-primary) var(--iq-light-primary); scrollbar-width: thin; }
+.scroller::-webkit-scrollbar-thumb { background-color: var(--iq-primary); }
+.scroller::-webkit-scrollbar-track { background-color: var(--iq-light-primary); }
+#sidebar-scrollbar { overflow-y: auto; scrollbar-color: var(--iq-primary) var(--iq-light-primary); scrollbar-width: thin; }
+#sidebar-scrollbar::-webkit-scrollbar-thumb { background-color: var(--iq-primary); }
+#sidebar-scrollbar::-webkit-scrollbar-track { background-color: var(--iq-light-primary); }
+
+/* Form */
+#sidebar-scrollbar { height: 100%; }
+
+/*---------------------------------------------------------------------
+                                  Badge
+-----------------------------------------------------------------------*/
+.badge { padding: .3em .6em; line-height: 1.3; text-transform: capitalize; }
+.breadcrumb.bg-primary .breadcrumb-item+.breadcrumb-item::before { color: var(--iq-white); }
+
+/*---------------------------------------------------------------------
+                               Media Support
+-----------------------------------------------------------------------*/
+.media-support { display: inline-block; width: 100%; }
+.media-support-user-img img { height: 60px; }
+.media-support-header { display: flex; align-items: flex-start; }
+.media-support-info { flex: 1; }
+.projects-media img { height: 60px; }
+.iq-media-group .iq-media { margin-left: -20px; position: relative; z-index: 0; transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; }
+.iq-media-group .iq-media:hover { z-index: 9; }
+.iq-media-group .iq-media img, .iq-media-group .iq-media.border { border: 2px solid var(--iq-border-light); }
+.iq-media-group .iq-media:first-child { margin-left: 0; }
+.iq-media { display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex; background-repeat: no-repeat; background-position: center center; background-size: cover; }
+.iq-media:hover { text-decoration: none; }
+.media-pl { text-align: center; }
+
+/*---------------------------------------------------------------------
+                                  Best Sellers
+-----------------------------------------------------------------------*/
+.media-sellers { display: flex; align-items: flex-start; }
+.media-sellers-media-info { flex: 1; }
+.media-sellers-img img { height: 80px; }
+.iq-card .list-star li { margin-right: 0; }
+
+/*---------------------------------------------------------------------
+                                  Profile-Avatar
+-----------------------------------------------------------------------*/
+.iq-profile-avatar { position: relative; }
+.iq-profile-avatar:before { content: ''; position: absolute; border-radius: 100%; z-index: 1; border: 2px solid var(--iq-white); background-color: var(--iq-body-text); height: 16px; width: 16px; right: 0; bottom: -3px; }
+.iq-profile-avatar.status-online:before { background-color: var(--iq-success); }
+.iq-profile-avatar.status-away:before { background-color: var(--iq-warning); }
+.avatar-upload { position: relative; max-width: 205px; margin: 15px 0 0; }
+.avatar-upload .avatar-edit { position: absolute; right: 12px; z-index: 1; top: 10px; }
+.avatar-upload .avatar-edit input { display: none; }
+.avatar-upload .avatar-edit input + label { display: inline-block; width: 34px; height: 34px; margin-bottom: 0; border-radius: 100%; background: var(--iq-white); border: 1px solid var(--iq-body-text); box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); cursor: pointer; font-weight: normal; transition: all 0.2s ease-in-out; }
+.avatar-upload .avatar-edit input + label:hover { background: var(--iq-border-light); border-color: var(--iq-secondary); }
+.avatar-upload .avatar-edit input + label:after { content: "\f040"; font-family: "FontAwesome"; color: var(--iq-body-text); position: absolute; top: 6px; left: 0; right: 0; text-align: center; margin: auto; }
+.avatar-upload .avatar-preview { width: 192px; height: 192px; position: relative; border-radius: 100%; border: 6px solid var(--iq-border-light); box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); }
+.avatar-upload .avatar-preview > div { width: 100%; height: 100%; border-radius: 100%; background-size: cover; background-repeat: no-repeat; background-position: center; }
+
+/*---------------------------------------------------------------------
+                                  Countdown
+-----------------------------------------------------------------------*/
+.iq-comingsoon { margin-top: 80px; }
+.countdown { margin: 60px 0 0; padding: 0; }
+.countdown li { margin: 0 30px 0 0; padding: 45px 0; list-style: none; width: 22.8%; display: inline-block; text-align: center; line-height: normal; background: var(--iq-white); float: left; color: var(--iq-body-text); border-radius: 15px; }
+.countdown li span { font-size: 60px; display: inline-block; width: 100%; color: var(--iq-primary); }
+.countdown li:last-child { margin-right: 0; }
+.iq-comingsoon-form { position: relative; }
+.iq-comingsoon-form button { position: absolute; right: 0; top: 0; padding: 9px 30px; }
+
+/*---------------------------------------------------------------------
+                                  Progressbar
+-----------------------------------------------------------------------*/
+.iq-progress-bar { background: var(--iq-light); box-shadow: 0 0 0; height: 6px; margin: 0; position: relative; width: 100%; border-radius: 4px; }
+.iq-progress-bar > span { background: var(--iq-primary) none repeat scroll 0 0; display: block; height: 100%; width: 0; border-radius: 4px; }
+
+/*---------------------------------------------------------------------
+                             Dropdown Menu
+-----------------------------------------------------------------------*/
+.iq-card-header .dropdown-bg { background: var(--iq-light-primary); padding: 8px 15px; color: var(--iq-primary); border-radius: 15px; }
+.iq-card-header .dropdown-menu { margin: 0; padding: 0; font-size: 13px; top: 20px !important; border-radius: 10px; border-color: var(--iq-border-light); -webkit-box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); -moz-box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); }
+.iq-card-header .dropdown-menu .dropdown-item { padding: 8px 15px; color: var(--iq-body-text); }
+.iq-card-header .dropdown-menu .dropdown-item i { font-size: 14px; vertical-align: middle; }
+.dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover { background: transparent; color: var(--iq-primary); }
+
+/*--------------*/
+.iq-card-header select.form-control { background: var(--iq-border-light); border: none; font-size: 14px; margin-right: 15px; }
+.iq-card-header select.form-control.width-100 { width: 180px; }
+
+/*---------------------------------------------------------------------
+                             Badge Img Tag
+-----------------------------------------------------------------------*/
+.badge-img-tag { position: absolute; top: 15px; left: 15px; }
+
+/*---------------------------------------------------------------------
+                             list Style 1
+-----------------------------------------------------------------------*/
+.iq-list-style-1 { margin: 0; padding: 0; }
+.iq-list-style-1 li { display: inline-block; float: left; list-style-type: none; margin-right: 15px; }
+.iq-list-style-1 li:last-child { margin-right: 0; }
+.iq-list-style-1 li a { color: var(--iq-body-text); }
+.iq-list-style-1 li a i { color: var(--iq-body-text); margin-right: 5px; }
+.iq-list-style-1 li a:hover, .iq-list-style-1 li a:focus { text-decoration: none; color: var(--iq-primary); }
+.iq-list-style-1.text-white li a, .iq-list-style-1.text-white li a i { color: var(--iq-white); }
+.list-inline.text-white li a { color: var(--iq-white); }
+.list-inline.text-white li a:hover { opacity: 0.6; text-decoration: none; }
+
+/*---------------------------------------------------------------------
+                             Icon Box
+-----------------------------------------------------------------------*/
+.iq-icon-box { height: 60px; width: 60px; line-height: 60px; text-align: center; margin-right: 10px; font-size: 22px; text-decoration: none; }
+.iq-icon-box:hover { text-decoration: none; }
+
+/*---------------------------------------------------------------------
+                             Tasks Card
+-----------------------------------------------------------------------*/
+.tasks-card { padding: 0 0 15px 0; border-bottom: 1px solid var(--iq-border-light); margin: 0 0 15px 0; }
+.tasks-card .close { font-size: 16px; }
+.tasks-card:last-child { border: none; margin: 0; padding: 0; }
+
+/*---------------------------------------------------------------------
+                               Sign In
+-----------------------------------------------------------------------*/
+.sign-in-detail { color: var(--iq-white); }
+.sign-in-page { height: 100vh; background: var(--iq-primary) }
+.sign-in-detail { padding: 100px; height: 100vh; }
+.sign-in-logo { display: inline-block; width: 100%; }
+.sign-in-logo img { height: 50px; }
+.sign-in-from { padding: 0 60px; }
+.sign-info { border-top: 1px solid var(--iq-border-light); margin-top: 30px; padding-top: 20px; }
+.iq-social-media { margin: 0; padding: 0; float: right; }
+.iq-social-media li { list-style: none; float: left; margin-right: 10px; }
+.iq-social-media li:last-child { margin-right: 0; }
+.iq-social-media li a { height: 30px; width: 30px; text-align: center; font-size: 18px; line-height: 30px; display: inline-block; -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px; background: var(--iq-light-primary); color: var(--iq-primary) !important; }
+.iq-social-media li a:hover { text-decoration: none; }
+.sign-in-page .container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+.sign-in-page { background: #00adef; background: -moz-linear-gradient(-45deg, #00adef 0%, #0076e5 100%); background: -webkit-linear-gradient(-45deg, #00adef 0%, #0076e5 100%); background: linear-gradient(135deg, #00adef 0%, #0076e5 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adef', endColorstr='#0076e5', GradientType=1); position: relative; overflow: hidden; height: 100vh; width: 100%; margin: 0px auto; padding: 0px auto; }
+#container-inside { position: relative; min-width: 960px; max-width: 1280px; height: auto; min-height: 100%; margin: 0px auto; padding: 0px auto; overflow: visible; }
+#circle-small { -webkit-animation: circle-small-scale 3s ease-in-out infinite alternate; animation: circle-small-scale 3s ease-in-out infinite alternate; animation-timing-function: cubic-bezier(.6, 0, .4, 1); animation-delay: 0s; position: absolute; top: 200px; left: -150px; background: #fff; width: 300px; height: 300px; border-radius: 50%; opacity: 0.4; }
+#circle-medium { -webkit-animation: circle-small-scale 3s ease-in-out infinite alternate; animation: circle-small-scale 3s ease-in-out infinite alternate; animation-timing-function: cubic-bezier(.6, 0, .4, 1); animation-delay: 0.3s; position: absolute; top: 50px; left: -300px; background: #fff; width: 600px; height: 600px; border-radius: 50%; opacity: 0.3; }
+#circle-large { -webkit-animation: circle-small-scale 3s ease-in-out infinite alternate; animation: circle-small-scale 3s ease-in-out infinite alternate; animation-timing-function: cubic-bezier(.6, 0, .4, 1); animation-delay: 0.6s; position: absolute; top: -100px; left: -450px; background: #fff; width: 900px; height: 900px; border-radius: 50%; opacity: 0.2; }
+#circle-xlarge { -webkit-animation: circle-small-scale 3s ease-in-out infinite alternate; animation: circle-small-scale 3s ease-in-out infinite alternate; animation-timing-function: cubic-bezier(.6, 0, .4, 1); animation-delay: 0.9s; position: absolute; top: -250px; left: -600px; background: #fff; width: 1200px; height: 1200px; border-radius: 50%; opacity: 0.1; }
+#circle-xxlarge { -webkit-animation: circle-small-scale 3s ease-in-out infinite alternate; animation: circle-small-scale 3s ease-in-out infinite alternate; animation-timing-function: cubic-bezier(.6, 0, .4, 1); animation-delay: 1.2s; position: absolute; top: -400px; left: -750px; background: #fff; width: 1500px; height: 1500px; border-radius: 50%; opacity: 0.05; }
+@-webkit-keyframes circle-small-scale {
+  0% { -webkit-transform: scale(1.0); }
+  100% { -webkit-transform: scale(1.1); }
+}
+@keyframes circle-small-scale {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.1); }
+}
+
+/*---------------------------------------------------------------------
+                               Dash Hover
+-----------------------------------------------------------------------*/
+.dash-hover-blank { background-color: var(--iq-border-light); border: dashed 2px var(--iq-dark); height: 90%; justify-content: center; }
+.dash-hover-blank:hover { cursor: pointer; background-color: var(--iq-border-light); }
+
+/*---------------------------------------------------------------------
+                               Waves Effect
+-----------------------------------------------------------------------*/
+.iq-waves-effect { position: relative; overflow: hidden; }
+
+/*  Ripple */
+.ripple { width: 0; height: 0; border-radius: 50%; background: var(--iq-light-primary); transform: scale(0); position: absolute; opacity: 1; }
+.rippleEffect { animation: rippleDrop .6s linear; }
+@keyframes rippleDrop {
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/*---------------------------------------------------------------------
+                                Sidebar
+-----------------------------------------------------------------------*/
+.iq-sidebar { position: fixed; z-index: 999; top: 75px; width: 250px; height: 100%; background: var(--iq-white); transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; -webkit-box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); -moz-box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1); }
+.iq-sidebar .iq-sidebar-logo { float: none; width: 100%; }
+.iq-sidebar #sidebar-scrollbar { margin-top: 15px; }
+
+/*---------------------------------------------------------------------
+                             Sidebar Menu
+-----------------------------------------------------------------------*/
+.Top_Base {
+  background-color: #2787f4!important;
+  color:white;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  display: flex;        
+}
+.Header_search {
+margin-left:2em;
+}
+.Header_list-menu { 
+  list-style: none;
+  display: flex;
+  margin:0;
+  li { 
+    color : white;
+    height: 50px;
+    line-height: 50px;
+    
+  }
+  li:not(:first-child){
+    margin-left:1em;
+  }
+}
+
