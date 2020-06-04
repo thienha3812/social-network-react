@@ -29,6 +29,13 @@ export const LoadRequest = async () => {
     return response
 }
 
+export const GetUserOnline = async () =>{ 
+    const response = await apiService({
+        url : "/api/user/user-online",
+        method : "GET"
+    })
+    return response
+}
 export const CancleAcept = async ({user_id}) =>{ 
     const response = await apiService({
         url : "/api/user/cancle-request",

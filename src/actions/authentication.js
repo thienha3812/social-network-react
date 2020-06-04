@@ -18,9 +18,3 @@ export const signinAction = createAsyncThunk(SIGNIN, async ({ username, password
     return err;
   }
 });
-
-export const signoutAction = createAction(SIGNOUT, ({ username, password }) => ({
-  payload: {
-
-  },
-}));

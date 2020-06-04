@@ -20,7 +20,6 @@ import AddPlaceModal from '../../components/AddPlaceModal';
 const WrapperContainer = styled.div`
   transform:translateY(-3rem);
   padding : 0 10% 0 10%;
-
 `;
 
 const NewsFeedPage = () => {
@@ -85,13 +84,10 @@ const NewsFeedPage = () => {
           </Col>
           <Col span={16} className="Review-content">
             <Row>
-              <Col span={8}>
-                <Button onClick={()=>setOpenReviewModal(true)} className="w-100 border-0" style={{ borderRadius: '0', height: '50px', lineHeight: '25px' }} type="default">Viết review</Button>
-              </Col>
-              <Col span={8}>
-                <Button className="w-100 border-0" style={{ borderRadius: '0', height: '50px', lineHeight: '25px' }} type="default">Đánh giá địa điểm</Button>
-              </Col>
-              <Col span={8}>
+              <Col span={12}>
+                <Button onClick={()=>setOpenReviewModal(true)} className="w-100" style={{ borderRadius: '0', height: '50px', lineHeight: '25px' }} type="default">Viết review</Button>
+              </Col>              
+              <Col span={12}>
                 <Button className="w-100" style={{ borderRadius: '0', height: '50px', lineHeight: '25px' }} type="default" onClick={()=>setOpenAddPlaceModal(true)}>Thêm địa điểm mới</Button>
               </Col>
             </Row>

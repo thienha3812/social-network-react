@@ -1,11 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { signinAction } from '../actions/authentication';
 
-const initialState = [
-
-];
+export const initialState = []
 const authenticationReducer = createReducer(initialState, {
-  [signinAction.fulfilled]: (state, action) => ({ ...state, ...action.payload }),
+  [signinAction.fulfilled]: (state, action) => ({ ...state, ...action.payload,is_logged : true }),
 });
 
 

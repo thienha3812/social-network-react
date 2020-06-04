@@ -1,17 +1,26 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Layout, Menu,
+  Layout, Menu, Avatar, Badge
 } from 'antd';
 import {
   HomeOutlined,
 } from '@ant-design/icons';
+import { GetUserOnline } from '../services/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserOnlineAction } from '../actions/user_online';
 
 const { Sider } = Layout;
 
 
 const RightSidebar = () => {
-  const [, setToggle] = React.useState(true);
+  const [toggle, setToggle] = React.useState(true);
+  const dispatch = useDispatch()
+  const listUser = useSelector(state => state.user_online)  
+  console.log(listUser)
+  useEffect(() => {
+    dispatch(getUserOnlineAction())
+  }, [dispatch])  
   return (
     <Sider width={300} collapsed className="bg-white">
       <Menu
@@ -19,12 +28,17 @@ const RightSidebar = () => {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
       >
-        <Menu.Item key="1" icon={<HomeOutlined />}>
-          Trang chủ
-        </Menu.Item>
+        {listUser.map((user, i) => (
+          <Menu.Item key={i} title={user.username} style={{ height: "60px" }} className="pt-2 pb-2 d-flex justify-content-center ">
+            <Badge status={user.is_online == 1 ? "success" : "default"}>
+              <Avatar size="large" src={user.avatar} />
+            </Badge>
+          </Menu.Item>
+        ))}
+
       </Menu>
     </Sider>
   );
 };
 
-export default RightSidebar;
+export default React.memo(RightSidebar);
