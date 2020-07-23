@@ -41,7 +41,7 @@ const LoginPage = () => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputPassword1">Mật khẩu</label>
-                  <a href="#" className="float-right">Forgot password?</a>
+                  <a href="#" className="float-right">Quên mật khẩu?</a>
                   <input type="password" value={get(form, 'password')} className="form-control mb-0" onChange={(e) => setForm({ username, password: e.currentTarget.value })} id="exampleInputPassword1" placeholder="Nhập mật khẩu" />
                 </div>
                 <div className="d-inline-block w-100">
@@ -54,7 +54,7 @@ const LoginPage = () => {
                 <div className="sign-info">
                   <span className="dark-color d-inline-block line-height-2">
                     Bạn chưa có tài khoản?
-                    <Link to="/signup">Sign up</Link>
+                    <Link to="/signup">Đăng ký</Link>
                   </span>
                 </div>
               </div>

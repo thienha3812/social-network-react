@@ -259,7 +259,7 @@ const ProfilePage = () => {
                     <Col span={24}>
                         <Row>
                             <Col span={24} className="Background-image">
-                                <Avatar style={{ height: "150px", width: "150px" }} className="Backgroung-avatar" src={avatar} />
+                                <Avatar style={{ height: "130px", width: "130px" }} className="Background-avatar" src={avatar} />
                                 <div style={{ position: "absolute", left: "25%", top: "85%" }}>
                                     <h5 className="text-white">{full_name}</h5>
                                 </div>

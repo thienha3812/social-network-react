@@ -26,10 +26,12 @@ const App = () => {
       const username = state.authentication.user_infor.username
       const account_id = state.authentication.user_infor.account_id
       let _socket = socket({ username, account_id })
-      setSocket(_socket)
+      setSocket(_socket)    
+      _socket.on("USER_RECEIVE_MESSAGE",function(data){
+        
+    })  
       _socket.on("USER_ONLINE", function () {
         refreshUserOnline()
-        
       })
     }
   }, [is_logged])

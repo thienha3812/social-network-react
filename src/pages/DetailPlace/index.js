@@ -17,6 +17,7 @@ import { LikePost, UserComment } from '../../services/post';
 
 const WrapperContainer = styled.div`  
     padding : 0 5% 0 5%;  
+    height : 100%;
 
 `;
 
@@ -41,8 +42,8 @@ const LibraryImage = ({ images }) => (
 
 
 
-const Post = ({ updateData, posts }) => {    
-    const { username, full_name,account_id, avatar: user_avatar } = useSelector((state) => state.authentication.user_infor);
+const Post = ({ updateData, posts }) => {
+    const { username, full_name, account_id, avatar: user_avatar } = useSelector((state) => state.authentication.user_infor);
     const [commentContent, setCommentContent] = useState([])
     const likePost = async ({ post_id }) => {
         try {
@@ -52,7 +53,7 @@ const Post = ({ updateData, posts }) => {
         } catch (err) {
 
         }
-    }    
+    }
     const handleInput = async ({ e, post_id }) => {
         if (e.key === 'Enter') {
             e.currentTarget.value = ''
@@ -250,6 +251,7 @@ const ReviewArea = ({ updateData }) => {
 const DetailPlace = () => {
     const [loading, setLoading] = useState(true);
     const [content, setContent] = useState({
+        coordinate: {},
         id: '', name: '', rating: 0, images: [], description: '', posts: [], background_image: [],
     });
     const { id } = useParams();
@@ -269,41 +271,38 @@ const DetailPlace = () => {
     };
     return (
         <>
-            {loading ? <div>Loading......</div>
-                : (
-                    <WrapperContainer>
-                        <Row>
-                            <Col className="Landing-image d-flex flex-column align-items-center justify-content-center" span={24} style={{ height: '300px', background: `linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(${_.get(content, 'background_image[0].src', '')}) 100% 100% / 100% 100% no-repeat ` }}>
-                                <div className="d-flex mt-auto">
-                                    <h2 className="text-white">{content.name}</h2>
-                                </div>
-                                <div className="d-flex b-0 mt-auto mb-2 flex-column">
-                                    <div>
-                                        <small className="text-white">
-                                            {content.rating}
-                                            {' '}
+            <WrapperContainer>
+                <Row>
+                    <Col className="Landing-image d-flex flex-column align-items-center justify-content-center" span={24} style={{ height: '300px', background: `linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(${_.get(content, 'background_image[0].src', '')}) 100% 100% / 100% 100% no-repeat ` }}>
+                        <div className="d-flex mt-auto">
+                            <h2 className="text-white">{content.name}</h2>
+                        </div>
+                        <div className="d-flex b-0 mt-auto mb-2 flex-column">
+                            <div>
+                                <small className="text-white">
+                                    {content.rating}
+                                    {' '}
                         / 5 (27) đánh giá
                         </small>
-                                    </div>
-                                    <div>
-                                        <Rate disabled  defaultValue={content.rating} />
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row className="d-flex justify-content-between mt-3">
-                            <Col span={6}>
-                                <SimpleMap />
-                                <LibraryImage images={content.images} />
-                            </Col>
-                            <Col span={12}>
-                                <ReviewArea updateData={updateData} />
-                                <Post posts={content.posts} updateData={updateData} />
-                            </Col>
-                            <Col span={5} />
-                        </Row>
-                    </WrapperContainer>
-                )}
+                            </div>
+                            <div>
+                                <Rate disabled defaultValue={content.rating} />
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+                <Row className="d-flex justify-content-between mt-3">
+                    <Col span={6}>
+                        <SimpleMap lat={content.coordinate.lat} lng={content.coordinate.lng} />
+                        <LibraryImage images={content.images} />
+                    </Col>
+                    <Col span={12}>
+                        <ReviewArea updateData={updateData} />
+                        <Post posts={content.posts} updateData={updateData} />
+                    </Col>
+                    <Col span={5} />
+                </Row>
+            </WrapperContainer>
         </>
     );
 };

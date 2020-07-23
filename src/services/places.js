@@ -9,7 +9,13 @@ export const GetPlaces = async ({ keyword }) => {
   });
   return response;
 };
-
+export const GetPlaceForIndexPage = async () =>{ 
+  const response = await apiService({
+    url: "/api/places/get-place-for-index-page",
+    method : "GET"
+  })
+  return response
+}
 export const GetPlaceByID = async ({ id }) => {
   const response = await apiService({
     url: '/api/places/place-by-id',

@@ -17,7 +17,6 @@ const RightSidebar = () => {
   const [toggle, setToggle] = React.useState(true);
   const dispatch = useDispatch()
   const listUser = useSelector(state => state.user_online)  
-  console.log(listUser)
   useEffect(() => {
     dispatch(getUserOnlineAction())
   }, [dispatch])  
@@ -29,7 +28,7 @@ const RightSidebar = () => {
         defaultOpenKeys={['sub1']}
       >
         {listUser.map((user, i) => (
-          <Menu.Item key={i} title={user.username} style={{ height: "60px" }} className="pt-2 pb-2 d-flex justify-content-center ">
+          <Menu.Item key={i} title={user.full_name} style={{ height: "60px" }} className="pt-2 pb-2 d-flex justify-content-center ">
             <Badge status={user.is_online == 1 ? "success" : "default"}>
               <Avatar size="large" src={user.avatar} />
             </Badge>
